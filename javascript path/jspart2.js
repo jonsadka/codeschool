@@ -48,7 +48,6 @@ for(var monthNumber = 1; monthNumber <= monthsToPrint; monthNumber++) {
 }
 
 ////////////////////////////////////////////
-
 var totalGen = 19;
 var totalMW = 0;
 
@@ -68,6 +67,7 @@ for (currentGen = 1; currentGen <= 19; currentGen++) {
     console.log("Generator #" + currentGen + " is off");
   }
 
+
 //////////////////////////////////////////////////
 //var ageIsCorrect = false;
 
@@ -75,6 +75,7 @@ for (currentGen = 1; currentGen <= 19; currentGen++) {
 //	var userAge = prompt("What's your age user?");
 //  if (confirm("Are you sure your age is " + userAge + "?")) {
 //    ageIsCorrect = true;
+//    alert("Great! your age is logged as " + userAge);
 //  }
 //}
 
@@ -89,19 +90,19 @@ function multiply (a,b) {
 var showMe = multiply(x,y);
 console.log(showMe);
 
-//////////////////////////////////////////////////
 
+//////////////////////////////////////////////////
 var currenPopulation = 300;
 var rangerAvailable = 50;
 
-function feedPerRanger (a,b) {
-  return alert("Each Park Ranger should load " + a*2 / b + "lb(s) of feed into his/her BART today");
+function feedPerRanger (numSheeps, numRangers) {
+  return alert("Each Park Ranger should load " + numSheeps*2/numRangers + " lb(s) of feed into his/her BART today.");
 }
 
 feedPerRanger(currenPopulation,rangerAvailable);
 
-//////////////////////////////////////////////////
 
+//////////////////////////////////////////////////
 var currentPower = 0;
 var id = 1;
 var status = "off";
@@ -121,14 +122,12 @@ function changePowerTotal (total, ID, status, power) {
 
 changePowerTotal(currentPower,id,status,powerProduced);
 
-////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////
 var movie1 = ["Planet of", "the Apes", 2];
 var movie2 = ["Wild", "Wild", "West"]
 var eightiesMovies = [movie1, movie2]
-console.log(movie2);
-console.log(eightiesMovies[1][2] + " " + eightiesMovies[1][1] + " " + eightiesMovies[1][2])
-
+console.log(eightiesMovies[0][0] + " " + eightiesMovies[0][1] + " " + eightiesMovies[0][2])
 
 
 ////////////////////////////////////////////////////////////
@@ -138,7 +137,7 @@ function numStrings(list) {
   var count = 0;
   for(var i = 0; i < list.length; i++) {
     if (typeof list[i] == "string") {
-      count += 1;
+      count++;
     }
   }  
   return count;

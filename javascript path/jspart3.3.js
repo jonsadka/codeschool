@@ -1,37 +1,111 @@
-function assignLaser( shark, sharkList ){
-  for(var i = 0; i<sharkList.length; i++){
-    if(shark == sharkList[i]){
-      return function(){
-        alert("Yo, " + shark + "!\n" +
-              "Visit underwater strapping station " + (i+1) + " for your sweet laser.\n" +
-              "'Bout to get real up in here."
-             );
-      };
-    }
+function thisIsWeird () {
+
+  function secret(){
+    var unused3;
   }
+  
+  var result;
+
+  function secret(){
+    var unused1;
+  }
+  
+  result = secret;
+
+  function secret(){
+    var unused2;
+  }
+  
+  return result;
 }
 
-var sharkNames = ["Sea Pain", "Great Wheezy", "DJ Chewie", "Lil' Bitey", "Finmaster Flex", "Swim Khalifa", "Ice Teeth", "The Notorious J.A.W."];
-assignLaser("Sea Pain", allSharks)();
+console.log("unused2");
 
 
 ////////////////////////////////////////////////////////////////////////
-function makeTargetAssigner( sharks, targets ){
-  return function (shark) {
-    for ( var i = 0; i<sharks.length; i++) {
-      if (shark == sharks[i]) {
-        alert("What up, " + shark + "!\n" + 
-              "There've been " + targets[i] + " sightings in our 'hood!\n" + 
-              "Time for a swim-by lasering, homie!"
-              );
-      }
-    }
-  };
+function theBridgeOfHoistingDoom () {
+  function balrog(){ return "fire"; }
+
+  var ring;
+
+  function elf(){    return "pointy ears";  }
+  
+  ring = wizard;
+  wizard = balrog;
+  return wizard();
+  
+  function balrog(){    return "whip";  }
+  
+  function wizard(){    return "white";  }
+  
+  var power = ring();
+  
+  return elf();
+  
+  function elf(){    return "immortal";  }
+}
+//changes to:
+function theBridgeOfHoistingDoom () {
+  var ring = undefined;
+  var power = undefined;
+
+  function balrog(){    return "whip";  }
+  function wizard(){    return "white";  }
+  function elf(){    return "immortal";  }
+ 
+  ring = wizard;
+  wizard = balrog;
+  return wizard();
+
 }
 
-var listOfSharks = ["Sea Pain", "Great Wheezy", "DJ Chewie", "Lil' Bitey", "Finmaster Flex", "Swim Khalifa", "Ice Teeth", "The Notorious J.A.W."];
-var listOfTargets = ["icicle bat", "snow yeti", "killer penguin", "frost tiger", "polar bear", "iceberg", "blue witch", "wooly mammoth"];
 
-var getTargetFor = makeTargetAssigner(  listOfSharks, 
-                                        listOfTargets );
-getTargetFor("Ice Teeth");
+////////////////////////////////////////////////////////////////////////
+function theBridgeOfHoistingDoom( ){
+  function fellowship(){    return "friends";  }
+  var sword = "sting";
+  var dwarf = function(){     return "axe";  };
+  var fall = "Fly you fools!";
+  fellowship = function(){    return "broken";  };
+  ring();
+  return sword;
+  fellowship = function(){    return "mines"  };
+  sword = function(){    return "glamdring";  };
+  var ring = function(){      return "precious";  }; 
+}
+
+//changes to:
+function theBridgeOfHoistingDoom( ){
+  var sword = undefined;
+  var dwarf = undefined;
+  var fall = undefined;
+  var ring = undefined;
+
+  function fellowship(){    return "friends";  }
+
+  sword = "sting";
+  dwarf = function(){     return "axe";  };
+  fall = "Fly you fools!";
+  ring();
+  return sword;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+function theBridgeOfHoistingDoom( ){
+  var sword = undefined;
+  var dwarf = undefined;
+  var fall = undefined;
+  var ring = undefined;
+  
+  function fellowship(){    return "friends";  }
+
+  sword = "sting";
+  dwarf = function (){     return "axe";  }
+  fall = "Fly you fools!";
+  fellowship = function (){    return "broken";  }
+  ring(); 
+  return sword;
+}
+
+console.log("ERROR"); /// because ring() produces an error before getting to return sword

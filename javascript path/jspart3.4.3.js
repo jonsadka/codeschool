@@ -6,11 +6,11 @@ var rockSpearguns = {
   "The Impaler": {barbs: 1, weight: 30, heft: "chest"}
 };
 
-var listGuns = function(guns) {
-  for (var sparegun in guns) {
-    console.log(sparegun);
+function listGuns (guns){
+  for(var key in guns){
+    console.log(key);
   }
-};
+}
 
 listGuns(rockSpearguns);
 

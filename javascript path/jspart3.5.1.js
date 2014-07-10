@@ -58,7 +58,7 @@ Object.prototype.noCalvesYet = function() {
 Array.prototype.countForBreeding = function () {
   var numToBreed = 0;
   for (var i=0; i<this.length; i++) {
-    if (this[i].noCalvesYet()==true) {
+    if (this[i].noCalvesYet()) {
       numToBreed++;
     }
   }

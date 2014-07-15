@@ -49,10 +49,7 @@ var forestCows = [
 ];
 
 Object.prototype.noCalvesYet = function() {
-  if (this.type=="cow" && this.hadCalf==null) {
-    return true;
-  }
-  return false;
+  return this.type=="cow" && this.hadCalf==null;
 }
 
 Array.prototype.countForBreeding = function () {

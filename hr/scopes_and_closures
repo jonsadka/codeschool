@@ -1,0 +1,5 @@
+var a_variable = { a: 1 };
+a_variable.a_property = { b : 2 };
+({ c :3 }).a_property = { b : 2 };
+
+var gimmieObj = function()

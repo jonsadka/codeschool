@@ -27,7 +27,7 @@ var Person = Backbone.Model.extend({
 var PersonView = Backbone.View.extend({
 	tagName: 'li',
 
-	template: _.template("<strong><%= name %></strong> (<%= age %>) - <%= occupation %>"),
+	template: _.template( $('#personTemplate').html() ),
 
 	initialize: function(){
 		this.render();
@@ -35,7 +35,7 @@ var PersonView = Backbone.View.extend({
 
 	render: function(){
 		// template object with its data
-		// toJSON() turn the model into the object only
+			// and toJSON() turn the model into the object only
 		this.$el.html( this.template(this.model.toJSON()) );
 	}
 

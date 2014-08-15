@@ -6,6 +6,12 @@
 	</head>
 	<body>
 		<h1>hello world</h1>
+
+		<!-- any type other than text/javascript means the browser wont run it like javascript  -->
+		<script id="personTemplate" type="text/template">
+			<strong><%= name %></strong> (<%= age %>) - <%= occupation %>
+		</script>
+
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/underscore/underscore.js"></script>
 		<!-- make sure all backbone dependencies are loaded before backbone -->

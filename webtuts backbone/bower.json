@@ -1,0 +1,12 @@
+{
+  "name": "backbone example",
+  "version": "0.0.0",
+  "authors": [
+    "Jon Sadka <jonsadka@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.1"
+  }
+}

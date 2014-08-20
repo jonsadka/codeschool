@@ -25,20 +25,35 @@
 	}
 });
 
+// View for all people
+var PeopleView = Backbone.View.extend({
+	tagName: 'ul',
+
+	render: function(){
+		// filter through all item in a collection
+		this.collection.each(function(person){
+			// for each, create a new PersonView
+			var personView = new PersonView({ model: person });
+			// append to root element
+			this.$el.append(personView.render().el);
+		}, this);
+
+		return this;
+	}
+
+});
+
 // Person View
 var PersonView = Backbone.View.extend({
 	tagName: 'li',
 
 	template: _.template( $('#personTemplate').html() ),
 
-	initialize: function(){
-		this.render();
-	},
-
 	render: function(){
 		// template object with its data
 			// and toJSON() turn the model into the object only
 		this.$el.html( this.template(this.model.toJSON()) );
+		return this;
 	}
 });
 
@@ -59,3 +74,6 @@ var peopleCollection = new PeopleCollection([
 		occupation: 'software engineer'
 	}
 ]);
+
+var peopleView = new PeopleView({ collection: peopleCollection });
+$(document.body).append(peopleView.render().el);

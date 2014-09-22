@@ -1,0 +1,9 @@
+.DS_Store
+*~
+
+# node dependencies
+node_modules/*
+
+# bower dependencies
+/angular/practice directives/node_modules
+angular/practice directives/app/bower_components

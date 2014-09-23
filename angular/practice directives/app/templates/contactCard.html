@@ -1,0 +1,6 @@
+<div>
+  <h1>{{title}}<h1>
+  <div ng-transclude></div>
+  <h6>{{friend.firstName}} {{friend.lastName}}</h6>
+  <div ng-repeat="tweet in friend.tweets">{{tweet.text}}</div>
+</div>

@@ -5,5 +5,7 @@
 node_modules/*
 
 # bower dependencies
-/angular/practice directives/node_modules
+angular/practice directives/node_modules
 angular/practice directives/app/bower_components
+angular/practice d3 directives/node_modules
+angular/practice d3 directives/app/bower_components

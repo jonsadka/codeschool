@@ -15,23 +15,32 @@
       height: 100%;
     }
     donut-chart {
-      width: 150px;
-      height: 150px;
+      width: 100%;
+      height: 100%;
       display: block;
+      float: left;
     }
   </style>
 </head>
 
-<body ng-app="myD3App">
-  <donut-chart></donut-chart>
-  <donut-chart></donut-chart>
+<body ng-app="myD3App" ng-controller="DonutChartController">
+  <donut-chart data="chart" ng-repeat="chart in charts" ng-style="{width:100 / charts.length + '%'}"></donut-chart>
   <script>
 
 var app = angular.module('myD3App', []);
 
+app.controller('DonutChartController', function($scope, $window){
+  $scope.charts = d3.range(10).map(function(){
+    return d3.range(10).map(Math.random);
+  });
+  angular.element($window).on('resize', function(){
+    $scope.$apply()
+  });
+})
+
 app.directive('donutChart',function(){
   function link(scope, el, attr){
-    var data = [82,32,63,42];
+    var data = scope.data;
     var color = d3.scale.category10();
     var el = el[0];
     var width = el.clientWidth;
@@ -41,20 +50,40 @@ app.directive('donutChart',function(){
     var arc = d3.svg.arc()
       .outerRadius(min / 2 * 0.9)
       .innerRadius(min / 2 * 0.5);
-    var svg = d3.select(el).append('svg')
-      .attr({width: width, height:height})
-      .append('g')
-        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+    var svg = d3.select(el).append('svg');
+    var g = svg.append('g');
+
     // add the <paths>s for each arc slice
-    svg.selectAll('path').data(pie(data))
+    var arcs = g.selectAll('path').data(pie(data))
       .enter().append('path')
         .style('stroke','white')
-        .attr('d', arc)
-        .attr('fill', function(d,i){ return color(i)});
+        .attr('fill', function(d,i){ return color(i) });
+    
+    // change things that depend on width and height of page resizing
+    scope.$watch(function(){
+      return el.clientWidth * el.clientHeight;
+    }, function(){
+      width = el.clientWidth;
+      height = el.clientHeight;
+
+      min = Math.min(width, height);
+
+      arc.outerRadius(min/2 * 0.9).innerRadius(min/2 * 0.5);
+
+      svg.attr({width: width, height: height});
+
+      g.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+      arcs.attr('d', arc);
+    })
+
   }
   return {
     link: link,
-    restrict: 'E'
+    restrict: 'E',
+    scope: {
+      data: '='
+    }
   }
 })
 

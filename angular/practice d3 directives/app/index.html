@@ -15,8 +15,8 @@
       height: 100%;
     }
     donut-chart {
-      width: 100%;
-      height: 100%;
+      width: 100px;
+      height: 100px;
       display: block;
       float: left;
     }
@@ -24,16 +24,20 @@
 </head>
 
 <body ng-app="myD3App" ng-controller="DonutChartController">
-  <donut-chart data="chart" ng-repeat="chart in charts" ng-style="{width:100 / charts.length + '%'}"></donut-chart>
+  <donut-chart data="shared.ourData" ng-repeat="chart in charts" ng-style="{width: 400 / charts.length + '%'}"></donut-chart>
   <script>
 
 var app = angular.module('myD3App', []);
 
 // on window rezise, dirty the data so it rerenders
 app.controller('DonutChartController', function($scope, $window){
-  $scope.charts = d3.range(10).map(function(){
-    return d3.range(10).map(Math.random);
-  });
+  $scope.charts = d3.range(50).map(function(){
+      return d3.range(10).map(Math.random);
+    });
+  $scope.shared = {
+    ourData: d3.range(10).map(Math.random)
+  };
+  $scope.ourData = d3.range(10).map(Math.random);
   angular.element($window).on('resize', function(){
     $scope.$apply()
   });

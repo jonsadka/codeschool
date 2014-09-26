@@ -52,3 +52,14 @@ console.log(          amy.constructor);
 console.log(amy instanceof Car);
 
 // Pseudoclassical
+var Car = function(loc){
+  this.loc = loc;
+};
+Car.prototype.move = function(){
+  this.loc++;
+};
+
+var amy = new Car(1);
+amy.move();
+var ben = new Car(10);
+ben.move();
